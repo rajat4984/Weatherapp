@@ -1,0 +1,20 @@
+@use "./mixins/mixin.scss" as *;
+
+*{
+  font-family: "Hubballi", cursive;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: linear-gradient(
+    to bottom,
+    #4561df,
+    #2c77e0,
+    #3289db,
+    #4f99d3,
+    #72a6c9
+  );
+  color: white;
+  height: 100vh;
+}

@@ -1,9 +1,10 @@
-import "./css/style.css";
+import Navbar from "./components/Navbar";
+import "./scss/index.scss";
 
 function App() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Navbar brandName = "WeatherOwn"/>
     </div>
   );
 }
