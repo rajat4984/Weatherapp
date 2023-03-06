@@ -15,6 +15,7 @@ function Navbar({brandName}) {
                 <button><BiSearchAlt/></button>
             </div>
         </nav>
+        <hr className='default-hr' />
     </div>
   )
 }

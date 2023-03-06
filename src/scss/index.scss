@@ -1,4 +1,4 @@
-@use "./mixins/mixin.scss" as *;
+@use "./mixin.scss" as *;
 
 *{
   font-family: "Hubballi", cursive;
@@ -17,4 +17,6 @@ body{
   );
   color: white;
   height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
 }

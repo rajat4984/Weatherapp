@@ -1,0 +1,47 @@
+@use "../mixin" as *;
+@use "../variables" as *;
+
+.today-weather {
+  @include flexBox(center, center, column);
+  margin: 1em 0;
+
+  .location {
+    text-align: center;
+    margin: 1em 0;
+
+    h1 {
+      margin: 0.1em 0;
+    }
+  }
+
+  .today-temp {
+    @include flexBox(center, center, column);
+    text-align: center;
+    margin: 1em 0;
+
+    h1 {
+      @include flexBox();
+      margin: 0.1em 0;
+    }
+  }
+
+  .today-temp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 2em 0;
+    align-items: center;
+
+    .temp-grid-item {
+      text-align: center;
+
+      .grid-main {
+        margin: 0.2em 0;
+      }
+      .grid-sub {
+        font-size: 0.9rem;
+        color: #ffffff8e;
+      }
+    }
+  }
+}

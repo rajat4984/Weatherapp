@@ -1,0 +1,5 @@
+@use "./variables" as *;
+
+.default-hr{
+    border-color: $primary-background;
+}

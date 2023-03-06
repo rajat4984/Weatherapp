@@ -1,5 +1,36 @@
-@use "../mixins/mixin.scss" as *;
+@use "../mixin.scss" as *;
+@use "../utilities.scss" as *;
+@use "../variables" as *;
 
-.navbar{
-    @include flexBox(space-between);
+.navbar {
+  @include flexBox(space-between);
+  margin: $base-margin;
+
+  .search-bar {
+    @include flexBox();
+
+    input {
+      background: $primary-background;
+      border: transparent;
+      height: 2em;
+      border-radius: 5px;
+      outline: none;
+      margin-right: 0.5em;
+      padding-left: 0.5em;
+      caret-color: white;
+      color: white;
+
+      &::placeholder {
+        color: #ffffffb4;
+        padding-left: 1em;
+        font-size: 0.8rem;
+      }
+    }
+    button {
+      background: none;
+      color: white;
+      outline: none;
+      border: none;
+    }
+  }
 }
