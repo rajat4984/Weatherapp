@@ -7,7 +7,7 @@
   margin: $base-margin;
 
   .search-bar {
-    @include flexBox();
+    @include flexBox($justify: flex-start);
 
     input {
       background: $primary-background;
@@ -15,14 +15,13 @@
       height: 2em;
       border-radius: 5px;
       outline: none;
-      margin-right: 0.5em;
       padding-left: 0.5em;
       caret-color: white;
       color: white;
 
       &::placeholder {
         color: #ffffffb4;
-        padding-left: 1em;
+        padding-left: 0.5em;
         font-size: 0.8rem;
       }
     }
@@ -31,6 +30,27 @@
       color: white;
       outline: none;
       border: none;
+      margin: 0;
+    }
+  }
+}
+
+.navigation {
+  display: none;
+}
+
+.mobile-navigation {
+  .mobile-navigation-links {
+    position: absolute;
+    top: 50px;
+    right: 0%;
+    background-color: rgba(27, 27, 27, 0.527);
+    width: 100%;
+
+    .nav-links {
+      * {
+        margin: 0.5em 0.2em 0.5em 0.3em;
+      }
     }
   }
 }
