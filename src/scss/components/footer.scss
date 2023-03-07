@@ -1,0 +1,13 @@
+@use "../variables" as *;
+@use "../mixin" as *;
+
+.footer{
+    text-align: center;
+    margin-top: 2em;
+    padding: 3%;
+    background-color: $card-background;
+
+    p{
+        @include flexBox;
+    }
+}
