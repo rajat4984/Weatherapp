@@ -1,5 +1,6 @@
 import React from "react";
 import { BsClouds } from "react-icons/bs";
+import "../scss/components/fivehour.scss";
 
 function FiveHour() {
   return (

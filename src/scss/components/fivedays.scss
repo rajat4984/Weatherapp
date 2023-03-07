@@ -1,22 +1,23 @@
 @use "../variables" as *;
 
-.five-hour {
+.five-days {
   h3 {
     margin: 2em 0 1.5em 0;
     text-align: center;
   }
 
-  .five-hour-grid {
+  .five-days-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    gap: 20px;
     place-items: center;
     text-align: center;
+
     .grid-item {
       background-color: $card-background;
       padding: 1em 4em;
       border-radius: 5px;
-
+      display: flex;
       p {
         margin: 1em 0;
       }

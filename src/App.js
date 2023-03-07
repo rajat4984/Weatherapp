@@ -1,3 +1,4 @@
+import FiveDays from "./components/FiveDays";
 import FiveHour from "./components/FiveHour";
 import Navbar from "./components/Navbar";
 import TodayWeather from "./components/TodayWeather";
@@ -9,6 +10,7 @@ function App() {
       <Navbar brandName="WeatherOwn" />
       <TodayWeather />
       <FiveHour />
+      <FiveDays/>
     </div>
   );
 }
