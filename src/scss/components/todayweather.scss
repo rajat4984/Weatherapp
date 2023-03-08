@@ -2,7 +2,7 @@
 @use "../variables" as *;
 
 .today-weather {
-  @include flexBox(center, center, column);
+  @include flexBox($direction: column);
   margin: 1em 0;
 
   .location {
@@ -15,13 +15,17 @@
   }
 
   .today-temp {
-    @include flexBox(center, center, column);
+    @include flexBox($direction: column);
     text-align: center;
     margin: 1em 0;
 
     h1 {
       @include flexBox();
       margin: 0.1em 0;
+
+      @include sm {
+        font-size: 6rem;
+      }
     }
   }
 
@@ -41,6 +45,40 @@
       .grid-sub {
         font-size: 0.9rem;
         color: #ffffff8e;
+      }
+    }
+  }
+
+  //Media-Query
+
+  @include sm {
+    @include flexBox($align: flex-start, $direction: column);
+    margin: 0 20%;
+
+    .location {
+      text-align: initial;
+      p {
+        font-size: 1.2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .today-info-container {
+      @include flexBox(space-between);
+      .today-temp {
+        @include flexBox($align: initial, $direction: column);
+        border-right: 1px solid white;
+        padding-right: 3em;
+        text-align: left;
+        h1 {
+          font-size: 8rem;
+        }
+      }
+      .today-temp-grid {
+        padding-left: 3em;
       }
     }
   }
