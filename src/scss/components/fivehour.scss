@@ -14,15 +14,17 @@
     place-items: center;
     text-align: center;
     .grid-item {
+      @include flexBox();
       background-color: $card-background;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 1em 2em;
       border-radius: 5px;
       p {
         margin: 1em;
       }
     }
+  }
+
+  @include sm {
+    // @include flexBox($direction: column);
   }
 }
