@@ -17,9 +17,17 @@
       @include flexBox();
       background-color: $card-background;
       padding: 1em 2em;
-      border-radius: 5px;
+      border-radius: 10px;
       p {
         margin: 1em;
+      }
+    }
+  }
+
+  @include breakpoint(550px) {
+    .five-hour-grid {
+      .grid-item {
+        display: block;
       }
     }
   }
@@ -34,16 +42,16 @@
       gap: 10px;
       place-items: initial;
       .grid-item {
-        @include flexBox($direction: column);
-        padding: .5em 1.5em;
-        transition: .3s;
+        padding: 1em 0;
+        width: 85%;
+        transition: 0.3s;
         font-size: 1.5rem;
         cursor: pointer;
-        &:hover{
+        &:hover {
           transform: scale(1.1);
         }
-        p{
-          margin: .5em;
+        p {
+          margin: 0.5em 0;
         }
       }
     }
