@@ -10,4 +10,9 @@
     p{
         @include flexBox;
     }
+
+    @include sm{
+        padding: 2%;
+        font-size: 1.3rem;   
+    }
 }

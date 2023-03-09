@@ -2,18 +2,14 @@
 @use "../mixin" as *;
 
 .five-days {
-  margin: 5%;
-
   h3 {
     margin: 3.5em 0 1em 0;
     text-align: center;
   }
   .grid-item {
     background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
+    @include flexBox(space-around);
     font-size: 1rem;
-    justify-content: space-between;
     text-align: center;
     margin-bottom: 1em;
     padding: 1em;
@@ -21,10 +17,32 @@
     transition: transform 0.3s ease-in-out;
 
     .grid-sub {
-      font-size: .8rem;
-      margin-top: .7em;
+      font-size: 0.8rem;
+      margin-top: 1em;
       font-weight: 200;
       color: rgba(255, 255, 255, 0.596);
+    }
+  }
+
+  @include sm {
+    h3 {
+      margin-top: 5em;
+      text-align: left;
+    }
+    .five-days-grid {
+      margin: 0 8%;
+      .grid-item {
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover{
+          transform: scale(1.1);
+        }
+
+        .grid-sub {
+          font-size: 1rem;
+        }
+      }
     }
   }
 }
