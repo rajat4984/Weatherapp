@@ -53,7 +53,6 @@
 
   @include sm {
     @include flexBox($align: flex-start, $direction: column);
-    margin: 0 20%;
 
     .location {
       text-align: initial;
@@ -67,7 +66,8 @@
     }
 
     .today-info-container {
-      @include flexBox(space-between);
+      @include flexBox();
+      align-self: center;
       .today-temp {
         @include flexBox($align: initial, $direction: column);
         border-right: 1px solid white;
@@ -79,6 +79,7 @@
       }
       .today-temp-grid {
         padding-left: 3em;
+        gap: 25px;
       }
     }
   }

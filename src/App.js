@@ -9,10 +9,12 @@ function App() {
   return (
     <div className="app">
       <Navbar brandName="WeatherOwn" />
-      <TodayWeather />
-      <FiveHour />
-      <FiveDays/>
-      <Footer/>
+      <div className="content-wrapper">
+        <TodayWeather />
+        <FiveHour />
+        <FiveDays />
+      </div>
+      <Footer />
     </div>
   );
 }

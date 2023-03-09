@@ -10,7 +10,7 @@
   .five-hour-grid {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     place-items: center;
     text-align: center;
     .grid-item {
@@ -25,6 +25,27 @@
   }
 
   @include sm {
-    // @include flexBox($direction: column);
+    h3 {
+      text-align: left;
+      margin-top: 3em;
+    }
+
+    .five-hour-grid {
+      gap: 10px;
+      place-items: initial;
+      .grid-item {
+        @include flexBox($direction: column);
+        padding: .5em 1.5em;
+        transition: .3s;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:hover{
+          transform: scale(1.1);
+        }
+        p{
+          margin: .5em;
+        }
+      }
+    }
   }
 }
