@@ -33,23 +33,22 @@
       margin: 0;
     }
   }
-}
+  .navigation {
+    display: none;
+  }
 
-.navigation {
-  display: none;
-}
+  .mobile-navigation {
+    .mobile-navigation-links {
+      position: absolute;
+      top: clamp(20px,2.8em,500px);
+      right: 0%;
+      background-color: rgba(27, 27, 27, 0.527);
+      width: 100%;
 
-.mobile-navigation {
-  .mobile-navigation-links {
-    position: absolute;
-    top: 50px;
-    right: 0%;
-    background-color: rgba(27, 27, 27, 0.527);
-    width: 100%;
-
-    .nav-links {
-      * {
-        margin: 0.5em 0.2em 0.5em 0.3em;
+      .nav-links {
+        * {
+          margin: 0.5em 0.2em 0.5em 0.3em;
+        }
       }
     }
   }
