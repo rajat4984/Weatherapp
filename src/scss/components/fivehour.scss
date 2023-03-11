@@ -2,9 +2,15 @@
 @use "../mixin" as *;
 
 .five-hour {
-  h3 {
+  .heading-container {
+    @include flexBox(space-between);
     margin: 2em 0 1.5em 0;
-    text-align: center;
+
+    p {
+      font-size: 1.2rem;
+      color: #ffffffc5;
+      cursor: pointer;
+    }
   }
 
   .five-hour-grid {
@@ -34,9 +40,11 @@
   }
 
   @include sm {
-    h3 {
-      text-align: left;
-      margin-top: 5em;
+    .heading-container {
+      h3 {
+        text-align: left;
+        margin-top: 5em;
+      }
     }
 
     .five-hour-grid {
