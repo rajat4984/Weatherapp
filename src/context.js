@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { IoThunderstormOutline } from "react-icons/io5";
 import {
   BsSun,
@@ -18,6 +18,7 @@ export const AppProvider = ({ children }) => {
   const [city, setCity] = useState("Delhi");
   const [unit, setUnit] = useState("metric");
   const [fiveHourData, setFiveHourData] = useState([]);
+  const [fiveDaysData, setFiveDaysData] = useState([]);
 
   const getLatLon = async () => {
     const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
@@ -40,6 +41,17 @@ export const AppProvider = ({ children }) => {
     setFiveHourData([...hourlyData]);
   };
 
+  const getFiveDaysData = async () => {
+    const cityInfo = await getLatLon();
+    const lat = cityInfo[0];
+    const lon = cityInfo[1];
+
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely,hourly&appid=${apiKey}`;
+    const { data } = await axios.get(url);
+    const dailyData = data.daily.slice(1, 6);
+    setFiveDaysData([...dailyData]);
+  };
+
   const getIcon = (iconId) => {
     if (iconId >= 200 && iconId <= 232) {
       return <IoThunderstormOutline />;
@@ -53,23 +65,36 @@ export const AppProvider = ({ children }) => {
       return <BsCloudHaze />;
     } else if (iconId >= 801 && iconId <= 804) {
       return <BsClouds />;
-    } else {
-      <BsSun />;
+    } else if (iconId === 800) {
+      return <BsSun />;
     }
   };
 
-  const getTime = (unixTime) => {
-    const time = new Date(unixTime * 1000).toLocaleTimeString();
-    const numberTime = time.slice(0, 5);
-    const alphaTime = time.slice(8, 11);
-    return numberTime + alphaTime;
-  };
+  const getTimeDay = (unixTime) => {
+    unixTime = new Date(unixTime * 1000);
+    const time = unixTime.toLocaleTimeString();
+    const fullDay = unixTime.toDateString();
 
-  getTime();
+    //manipulating string to get day of week eg:Mon.
+    const day = fullDay.slice(0, 3);
+
+    //manipulating string to get time eg: 12:30pm.
+    const resultTime = time.slice(0, 5) + time.slice(8, 11);
+
+    return { resultTime, day };
+  };
 
   return (
     <AppContext.Provider
-      value={{ getFiveHourData, fiveHourData, city, getIcon, getTime }}
+      value={{
+        getFiveHourData,
+        fiveHourData,
+        city,
+        getIcon,
+        getTimeDay,
+        getFiveDaysData,
+        fiveDaysData,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,170 +1,60 @@
-import React from "react";
-import "../scss/components/fivedays.scss"
+import React, { useEffect } from "react";
+import { useGlobalContext } from "../context";
+import "../scss/components/fivedays.scss";
 
 function FiveDays() {
+  const { fiveDaysData, getFiveDaysData, city, getIcon, getTimeDay } =
+    useGlobalContext();
+
+  useEffect(() => {
+    getFiveDaysData();
+  }, [city]);
+
   return (
     <div className="five-days">
-        <h3 className="five-days-heading">
-            Next 5 Days
-        </h3>
+      <h3 className="five-days-heading">Next 5 Days</h3>
       <div className="five-days-grid">
-        <div className="grid-item">
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              30<sup>°</sup>
-            </p>
-            <p className="grid-sub">high</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">16kmph</p>
-            <p className="grid-sub">wind</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">6:41</p>
-            <p className="grid-sub">sunrise</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              19<sup>°</sup>
-            </p>
-            <p className="grid-sub">low</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">25%</p>
-            <p className="grid-sub">humidity</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">18:23</p>
-            <p className="grid-sub">sunset</p>
-          </div>
-        </div>
-
-        <div className="grid-item">
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              30<sup>°</sup>
-            </p>
-            <p className="grid-sub">high</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">16kmph</p>
-            <p className="grid-sub">wind</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">6:41</p>
-            <p className="grid-sub">sunrise</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              19<sup>°</sup>
-            </p>
-            <p className="grid-sub">low</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">25%</p>
-            <p className="grid-sub">humidity</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">18:23</p>
-            <p className="grid-sub">sunset</p>
-          </div>
-        </div>
-
-
-        <div className="grid-item">
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              30<sup>°</sup>
-            </p>
-            <p className="grid-sub">high</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">16kmph</p>
-            <p className="grid-sub">wind</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">6:41</p>
-            <p className="grid-sub">sunrise</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              19<sup>°</sup>
-            </p>
-            <p className="grid-sub">low</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">25%</p>
-            <p className="grid-sub">humidity</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">18:23</p>
-            <p className="grid-sub">sunset</p>
-          </div>
-        </div>
-
-
-        <div className="grid-item">
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              30<sup>°</sup>
-            </p>
-            <p className="grid-sub">high</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">16kmph</p>
-            <p className="grid-sub">wind</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">6:41</p>
-            <p className="grid-sub">sunrise</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              19<sup>°</sup>
-            </p>
-            <p className="grid-sub">low</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">25%</p>
-            <p className="grid-sub">humidity</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">18:23</p>
-            <p className="grid-sub">sunset</p>
-          </div>
-        </div>
-
-
-        <div className="grid-item">
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              30<sup>°</sup>
-            </p>
-            <p className="grid-sub">high</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">16kmph</p>
-            <p className="grid-sub">wind</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">6:41</p>
-            <p className="grid-sub">sunrise</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">
-              19<sup>°</sup>
-            </p>
-            <p className="grid-sub">low</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">25%</p>
-            <p className="grid-sub">humidity</p>
-          </div>
-          <div className="grid-sub-item">
-            <p className="grid-main">18:23</p>
-            <p className="grid-sub">sunset</p>
-          </div>
-        </div>
+        {fiveDaysData.map((item, index) => {
+          console.log(item);
+          const { day } = getTimeDay(item.dt); //getting day from the object returned from getTimeDay function
+          return (
+            <div className="grid-item" key={index}>
+              <div className="grid-sub-item">
+                <p className="grid-main">{day}</p>
+                <p className="grid-sub">
+                  32<sup>°</sup>
+                </p>
+              </div>
+              <div className="grid-sub-item">
+                <p className="grid-main">{getIcon(item.weather[0].id)}</p>
+              </div>
+              <div className="grid-sub-item">
+                <p className="grid-main">
+                  {Math.floor(item.temp.max)}
+                  <sup>°</sup>
+                </p>
+                <p className="grid-sub">High</p>
+              </div>
+              <div className="grid-sub-item">
+                <p className="grid-main">
+                  {Math.floor(item.temp.min)}
+                  <sup>°</sup>
+                </p>
+                <p className="grid-sub">low</p>
+              </div>
+              <div className="grid-sub-item">
+                <p className="grid-main">{`${Math.ceil(
+                  (item.wind_speed * 18) / 5
+                )}kmph`}</p>
+                <p className="grid-sub">Wind</p>
+              </div>
+              <div className="grid-sub-item">
+                <p className="grid-main">{`${item.humidity}%`}</p>
+                <p className="grid-sub">humidity</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

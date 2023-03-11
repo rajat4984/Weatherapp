@@ -6,6 +6,7 @@
     margin: 3.5em 0 1em 0;
     text-align: center;
   }
+
   .grid-item {
     background-color: rgba(0, 0, 0, 0.3);
     @include flexBox(space-around);
@@ -25,12 +26,13 @@
   }
 
   @include sm {
+    margin: 2em 0;
     h3 {
-      margin-top: 5em;
+      margin-top: 5em 0;
       text-align: left;
     }
     .five-days-grid {
-      margin: 0 8%;
+      margin: 0;
       .grid-item {
         font-size: 1.5rem;
         cursor: pointer;
@@ -40,7 +42,7 @@
         }
 
         .grid-sub {
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
       }
     }

@@ -43,16 +43,15 @@
     .heading-container {
       h3 {
         text-align: left;
-        margin-top: 5em;
+        margin-top: 1.5em;
       }
     }
 
     .five-hour-grid {
-      gap: 10px;
+      gap: 13px;
       place-items: initial;
       .grid-item {
         padding: 1em 0;
-        width: 85%;
         transition: 0.3s;
         font-size: 1.5rem;
         cursor: pointer;

@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { BsClouds } from "react-icons/bs";
 import { useGlobalContext } from "../context";
 import "../scss/components/fivehour.scss";
 
 function FiveHour() {
-  const { getFiveHourData, fiveHourData, city, getIcon, getTime } =
+  const { getFiveHourData, fiveHourData, city, getIcon, getTimeDay } =
     useGlobalContext();
-  console.log(fiveHourData);
+
   useEffect(() => {
     getFiveHourData();
   }, [city]);
@@ -19,6 +18,7 @@ function FiveHour() {
       </div>
       <div className="five-hour-grid">
         {fiveHourData.map((item, index) => {
+          const { resultTime } = getTimeDay(item.dt);    //getting time from the object returned by getTimeDay
           return (
             <div className="grid-item" key={index}>
               <p className="degree">
@@ -26,7 +26,7 @@ function FiveHour() {
                 <sup>°</sup>
               </p>
               <p className="icon">{getIcon(item.weather[0].id)}</p>
-              <p className="time">{getTime(item.dt)}</p>
+              <p className="time">{resultTime}</p>
             </div>
           );
         })}
