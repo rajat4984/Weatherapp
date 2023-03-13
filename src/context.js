@@ -17,8 +17,10 @@ export const AppProvider = ({ children }) => {
   const apiKey = `170e7d85c14723782ac20964a574ef47`;
   const [city, setCity] = useState("Delhi");
   const [unit, setUnit] = useState("metric");
+  const [showChart, setShowChart] = useState(false);
   const [fiveHourData, setFiveHourData] = useState([]);
   const [fiveDaysData, setFiveDaysData] = useState([]);
+  const [currentData, setCurrentData] = useState({});
 
   const getLatLon = async () => {
     const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
@@ -34,22 +36,15 @@ export const AppProvider = ({ children }) => {
     const lat = cityInfo[0];
     const lon = cityInfo[1];
 
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely,daily&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely&appid=${apiKey}`;
     const res = await axios.get(url);
     const data = res.data;
     const hourlyData = data.hourly.slice(2, 7);
-    setFiveHourData([...hourlyData]);
-  };
-
-  const getFiveDaysData = async () => {
-    const cityInfo = await getLatLon();
-    const lat = cityInfo[0];
-    const lon = cityInfo[1];
-
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely,hourly&appid=${apiKey}`;
-    const { data } = await axios.get(url);
     const dailyData = data.daily.slice(1, 6);
+    const todayData = data.current;
+    setFiveHourData([...hourlyData]);
     setFiveDaysData([...dailyData]);
+    setCurrentData([...todayData]);
   };
 
   const getIcon = (iconId) => {
@@ -92,8 +87,10 @@ export const AppProvider = ({ children }) => {
         city,
         getIcon,
         getTimeDay,
-        getFiveDaysData,
         fiveDaysData,
+        showChart,
+        setShowChart,
+        currentData,
       }}
     >
       {children}

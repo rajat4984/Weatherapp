@@ -3,8 +3,15 @@ import { useGlobalContext } from "../context";
 import "../scss/components/fivehour.scss";
 
 function FiveHour() {
-  const { getFiveHourData, fiveHourData, city, getIcon, getTimeDay } =
-    useGlobalContext();
+  const {
+    getFiveHourData,
+    fiveHourData,
+    city,
+    getIcon,
+    getTimeDay,
+    setShowChart,
+    showChart,
+  } = useGlobalContext();
 
   useEffect(() => {
     getFiveHourData();
@@ -18,7 +25,7 @@ function FiveHour() {
       </div>
       <div className="five-hour-grid">
         {fiveHourData.map((item, index) => {
-          const { resultTime } = getTimeDay(item.dt);    //getting time from the object returned by getTimeDay
+          const { resultTime } = getTimeDay(item.dt); //getting time from the object returned by getTimeDay
           return (
             <div className="grid-item" key={index}>
               <p className="degree">

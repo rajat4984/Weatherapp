@@ -2,11 +2,16 @@
 @use "../mixin" as *;
 
 .five-days {
-  h3 {
-    margin: 3.5em 0 1em 0;
-    text-align: center;
-  }
+  .heading-container {
+    @include flexBox(space-between);
+    margin: 5em 0 1.5em 0;
 
+    p {
+      font-size: 1.2rem;
+      color: #ffffffc5;
+      cursor: pointer;
+    }
+  }
   .grid-item {
     background-color: rgba(0, 0, 0, 0.3);
     @include flexBox(space-around);
@@ -37,7 +42,7 @@
         font-size: 1.5rem;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
           transform: scale(1.1);
         }
 

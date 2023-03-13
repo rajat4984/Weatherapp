@@ -1,8 +1,10 @@
 import React from "react";
 import { BsSun } from "react-icons/bs";
+import { useGlobalContext } from "../context";
 import "../scss/components/todayweather.scss";
 
 function TodayWeather() {
+  const { currentData, getIcon, getTimeDay } = useGlobalContext();
   return (
     <div className="today-weather">
       <div className="location">
@@ -14,20 +16,21 @@ function TodayWeather() {
         <div className="today-temp">
           <h1>
             <BsSun />
-            30<sup>°</sup>
+            30
+            <sup>°</sup>
           </h1>
-          <p>Clear</p>
+          <p>clear</p>
         </div>
 
         <div className="today-temp-grid">
           <div className="temp-grid-item">
             <p className="grid-main">
-              30<sup>°</sup>
+              30 <sup>°</sup>
             </p>
             <p className="grid-sub">high</p>
           </div>
           <div className="temp-grid-item">
-            <p className="grid-main">16kmph</p>
+            <p className="grid-main">30</p>
             <p className="grid-sub">wind</p>
           </div>
           <div className="temp-grid-item">

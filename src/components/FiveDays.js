@@ -3,16 +3,15 @@ import { useGlobalContext } from "../context";
 import "../scss/components/fivedays.scss";
 
 function FiveDays() {
-  const { fiveDaysData, getFiveDaysData, city, getIcon, getTimeDay } =
+  const { fiveDaysData, city, getIcon, getTimeDay } =
     useGlobalContext();
-
-  useEffect(() => {
-    getFiveDaysData();
-  }, [city]);
 
   return (
     <div className="five-days">
-      <h3 className="five-days-heading">Next 5 Days</h3>
+      <div className="heading-container">
+        <h3 className="five-days-heading">Next 5 Days</h3>
+        <p>Chart</p>
+      </div>
       <div className="five-days-grid">
         {fiveDaysData.map((item, index) => {
           console.log(item);

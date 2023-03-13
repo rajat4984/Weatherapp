@@ -4,7 +4,7 @@
 .five-hour {
   .heading-container {
     @include flexBox(space-between);
-    margin: 2em 0 1.5em 0;
+    margin: 4.5em 0 1.5em 0;
 
     p {
       font-size: 1.2rem;
@@ -40,13 +40,6 @@
   }
 
   @include sm {
-    .heading-container {
-      h3 {
-        text-align: left;
-        margin-top: 1.5em;
-      }
-    }
-
     .five-hour-grid {
       gap: 13px;
       place-items: initial;
