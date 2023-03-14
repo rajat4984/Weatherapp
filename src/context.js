@@ -17,7 +17,8 @@ export const AppProvider = ({ children }) => {
   const apiKey = `170e7d85c14723782ac20964a574ef47`;
   const [city, setCity] = useState("Delhi");
   const [unit, setUnit] = useState("metric");
-  const [showChart, setShowChart] = useState(false);
+  const [showFiveDayChart, setFiveDayChart] = useState(false);
+  const [showFiveHourChart, setFiveHourChart] = useState(false);
   const [fiveHourData, setFiveHourData] = useState([]);
   const [fiveDaysData, setFiveDaysData] = useState([]);
   const [currentData, setCurrentData] = useState(undefined);
@@ -44,18 +45,8 @@ export const AppProvider = ({ children }) => {
     const todayData = data.daily[0];
     setFiveHourData([...hourlyData]);
     setFiveDaysData([...dailyData]);
-    setCurrentData({...todayData });
+    setCurrentData({ ...todayData });
   };
-
-  // const getTodayWeather = async () => {
-  //   const cityInfo = await getLatLon();
-  //   const lat = cityInfo[0];
-  //   const lon = cityInfo[1];
-  //   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely,hourly&appid=${apiKey}`;
-  //   const res = await axios.get(url);
-  //   const data = res.data;
-   
-  // };
 
   const getIcon = (iconId) => {
     if (iconId >= 200 && iconId <= 232) {
@@ -98,8 +89,10 @@ export const AppProvider = ({ children }) => {
         getIcon,
         getTimeDay,
         fiveDaysData,
-        showChart,
-        setShowChart,
+        showFiveDayChart,
+        showFiveHourChart,
+        setFiveDayChart,
+        setFiveHourChart,
         currentData,
       }}
     >

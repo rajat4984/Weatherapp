@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../context";
+import LineChart from "./LineChart";
 import "../scss/components/fivehour.scss";
 
 function FiveHour() {
@@ -7,19 +8,17 @@ function FiveHour() {
     fiveHourData,
     getIcon,
     getTimeDay,
-    setShowChart,
-    showChart,
+    showFiveHourChart,
+    setFiveHourChart,
   } = useGlobalContext();
-
-
 
   return (
     <div className="five-hour">
       <div className="heading-container">
         <h3 className="five-hour-heading">Next 5 hours</h3>
-        <p>Chart</p>
+        <p onClick={() => setFiveHourChart(!showFiveHourChart)}>Chart</p>
       </div>
-      <div className="five-hour-grid">
+      {!showFiveHourChart ?(<div className="five-hour-grid">
         {fiveHourData.map((item, index) => {
           const { resultTime } = getTimeDay(item.dt); //getting time from the object returned by getTimeDay
           return (
@@ -33,7 +32,7 @@ function FiveHour() {
             </div>
           );
         })}
-      </div>
+      </div>) : <LineChart/>}
     </div>
   );
 }
