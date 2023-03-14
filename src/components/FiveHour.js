@@ -13,9 +13,7 @@ function FiveHour() {
     showChart,
   } = useGlobalContext();
 
-  useEffect(() => {
-    getFiveHourData();
-  }, [city]);
+
 
   return (
     <div className="five-hour">

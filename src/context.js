@@ -41,10 +41,19 @@ export const AppProvider = ({ children }) => {
     const data = res.data;
     const hourlyData = data.hourly.slice(2, 7);
     const dailyData = data.daily.slice(1, 6);
-    const todayData = data.current;
     setFiveHourData([...hourlyData]);
     setFiveDaysData([...dailyData]);
-    setCurrentData([...todayData]);
+  };
+
+  const getTodayWeather = async () => {
+    const cityInfo = await getLatLon();
+    const lat = cityInfo[0];
+    const lon = cityInfo[1];
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=minutely,daily,hourly&appid=${apiKey}`;
+    const res = await axios.get(url);
+    const data = res.data;
+    const todayData = data.current;
+    setCurrentData({ ...currentData, ...todayData });
   };
 
   const getIcon = (iconId) => {
@@ -91,6 +100,7 @@ export const AppProvider = ({ children }) => {
         showChart,
         setShowChart,
         currentData,
+        getTodayWeather
       }}
     >
       {children}

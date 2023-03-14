@@ -14,7 +14,6 @@ function FiveDays() {
       </div>
       <div className="five-days-grid">
         {fiveDaysData.map((item, index) => {
-          console.log(item);
           const { day } = getTimeDay(item.dt); //getting day from the object returned from getTimeDay function
           return (
             <div className="grid-item" key={index}>
