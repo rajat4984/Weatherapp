@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGlobalContext } from "../context";
 import "../scss/components/fivedays.scss";
 
 function FiveDays() {
-  const { fiveDaysData, city, getIcon, getTimeDay } =
-    useGlobalContext();
+  const { fiveDaysData, getIcon, getTimeDay } = useGlobalContext();
 
   return (
     <div className="five-days">
@@ -14,11 +13,10 @@ function FiveDays() {
       </div>
       <div className="five-days-grid">
         {fiveDaysData.map((item, index) => {
-          const { day } = getTimeDay(item.dt); //getting day from the object returned from getTimeDay function
           return (
             <div className="grid-item" key={index}>
               <div className="grid-sub-item">
-                <p className="grid-main">{day}</p>
+                <p className="grid-main">{getTimeDay(item.dt).day}</p>
                 <p className="grid-sub">
                   32<sup>°</sup>
                 </p>

@@ -16,12 +16,11 @@ function App() {
 
   return (
     <div className="app">
-      
       <Navbar brandName="WeatherOwn" />
       <div className="content-wrapper">
+        <TodayWeather />
         <FiveHour />
         <FiveDays />
-        <TodayWeather />
       </div>
       <Footer />
     </div>

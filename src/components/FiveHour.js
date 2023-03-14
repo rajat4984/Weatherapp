@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGlobalContext } from "../context";
 import "../scss/components/fivehour.scss";
 
 function FiveHour() {
   const {
-    getFiveHourData,
     fiveHourData,
-    city,
     getIcon,
     getTimeDay,
     setShowChart,
