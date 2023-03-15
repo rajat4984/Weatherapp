@@ -17,6 +17,7 @@ export const AppProvider = ({ children }) => {
   const apiKey = `170e7d85c14723782ac20964a574ef47`;
   const [city, setCity] = useState("Delhi");
   const [unit, setUnit] = useState("metric");
+  const [timeFormat, setTimeFormat] = useState("h12");
   const [showFiveDayChart, setFiveDayChart] = useState(false);
   const [showFiveHourChart, setFiveHourChart] = useState(false);
   const [fiveHourData, setFiveHourData] = useState([]);
@@ -24,12 +25,21 @@ export const AppProvider = ({ children }) => {
   const [currentData, setCurrentData] = useState(undefined);
 
   const handleUnit = () => {
-    console.log("hello")
+    console.log("hello");
     if (unit === "metric") {
       setUnit("imperial");
-    } else if(unit === "imperial") {
+    } else if (unit === "imperial") {
       setUnit("metric");
     }
+  };
+
+  const handleTime = () => {
+    if (timeFormat === "h12") {
+      setTimeFormat("h23");
+    } else {
+      setTimeFormat("h12");
+    }
+    console.log(timeFormat);
   };
 
   const getLatLon = async () => {
@@ -76,8 +86,11 @@ export const AppProvider = ({ children }) => {
   };
 
   const getTimeDay = (unixTime) => {
+    console.log("Hello");
     unixTime = new Date(unixTime * 1000);
-    const time = unixTime.toLocaleTimeString();
+    const time = unixTime.toLocaleTimeString("en-US", {
+      hourCycle: `${timeFormat}`,
+    });
     const fullDay = unixTime.toDateString();
 
     //manipulating string to get day of week eg:Mon.
@@ -85,7 +98,6 @@ export const AppProvider = ({ children }) => {
 
     //manipulating string to get time eg: 12:30pm.
     const resultTime = time.slice(0, 5) + time.slice(8, 11);
-
     return { resultTime, day };
   };
 
@@ -106,6 +118,7 @@ export const AppProvider = ({ children }) => {
         setFiveDayChart,
         setFiveHourChart,
         currentData,
+        handleTime,
       }}
     >
       {children}

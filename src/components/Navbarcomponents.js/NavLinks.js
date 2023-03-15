@@ -4,8 +4,8 @@ import "../../scss/components/navbar.scss";
 import { motion } from "framer-motion";
 import { useGlobalContext } from "../../context";
 
-function NavLinks({ isMobile, closeMobileMenu, unit }) {
-  const { handleUnit } = useGlobalContext();
+function NavLinks({ isMobile, closeMobileMenu }) {
+  const { handleUnit, handleTime } = useGlobalContext();
 
   const animationFrom = { opacity: 0, y: -40 };
   const animateTo = { opacity: 1, y: 0 };
@@ -25,9 +25,12 @@ function NavLinks({ isMobile, closeMobileMenu, unit }) {
       <motion.p
         initial={animationFrom}
         animate={animateTo}
-        onClick={() => isMobile && closeMobileMenu()}
+        onClick={() => {
+          isMobile && closeMobileMenu();
+          handleTime();
+        }}
       >
-        24 hour time format
+        Change time formate
       </motion.p>
       <motion.p
         initial={animationFrom}
