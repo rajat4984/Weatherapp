@@ -8,11 +8,11 @@ import { useGlobalContext } from "./context";
 import "./scss/index.scss";
 
 function App() {
-  const { getFiveHourData, city } = useGlobalContext();
+  const { getFiveHourData, city,unit} = useGlobalContext();
 
   useEffect(() => {
     getFiveHourData();
-  }, [city]);
+  }, [city,unit]);
 
   return (
     <div className="app">

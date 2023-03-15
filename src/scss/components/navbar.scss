@@ -42,12 +42,19 @@
       position: absolute;
       top: clamp(20px,2.8em,500px);
       right: 0%;
-      background-color: rgba(27, 27, 27, 0.527);
+      background-color: rgba(27, 27, 27, 0.911);
       width: 100%;
 
       .nav-links {
-        * {
-          margin: 0.5em 0.2em 0.5em 0.3em;
+        padding: 1em 0;
+        *:not(:first-child) {
+          padding: 1em 0.2em 0.5em 1em;
+          cursor: pointer;
+        }
+
+        .search-bar{
+          padding: 1em;
+          padding-bottom: 0;
         }
       }
     }

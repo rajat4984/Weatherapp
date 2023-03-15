@@ -23,6 +23,15 @@ export const AppProvider = ({ children }) => {
   const [fiveDaysData, setFiveDaysData] = useState([]);
   const [currentData, setCurrentData] = useState(undefined);
 
+  const handleUnit = () => {
+    console.log("hello")
+    if (unit === "metric") {
+      setUnit("imperial");
+    } else if(unit === "imperial") {
+      setUnit("metric");
+    }
+  };
+
   const getLatLon = async () => {
     const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
     const res = await axios.get(url);
@@ -86,6 +95,9 @@ export const AppProvider = ({ children }) => {
         getFiveHourData,
         fiveHourData,
         city,
+        unit,
+        setCity,
+        handleUnit,
         getIcon,
         getTimeDay,
         fiveDaysData,

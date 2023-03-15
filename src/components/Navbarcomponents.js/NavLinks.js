@@ -2,10 +2,14 @@ import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import "../../scss/components/navbar.scss";
 import { motion } from "framer-motion";
+import { useGlobalContext } from "../../context";
 
-function NavLinks({ isMobile, closeMobileMenu }) {
+function NavLinks({ isMobile, closeMobileMenu, unit }) {
+  const { handleUnit } = useGlobalContext();
+
   const animationFrom = { opacity: 0, y: -40 };
   const animateTo = { opacity: 1, y: 0 };
+
   return (
     <div className="nav-links">
       <motion.div
@@ -23,21 +27,17 @@ function NavLinks({ isMobile, closeMobileMenu }) {
         animate={animateTo}
         onClick={() => isMobile && closeMobileMenu()}
       >
-        new link
+        24 hour time format
       </motion.p>
       <motion.p
         initial={animationFrom}
         animate={animateTo}
-        onClick={() => isMobile && closeMobileMenu()}
+        onClick={() => {
+          isMobile && closeMobileMenu();
+          handleUnit();
+        }}
       >
-        new link
-      </motion.p>
-      <motion.p
-        initial={animationFrom}
-        animate={animateTo}
-        onClick={() => isMobile && closeMobileMenu()}
-      >
-        new link
+        Change weather unit
       </motion.p>
     </div>
   );
