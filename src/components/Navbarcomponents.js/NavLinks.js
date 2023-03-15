@@ -30,7 +30,7 @@ function NavLinks({ isMobile, closeMobileMenu }) {
           handleTime();
         }}
       >
-        Change time formate
+        Change time
       </motion.p>
       <motion.p
         initial={animationFrom}
@@ -40,7 +40,7 @@ function NavLinks({ isMobile, closeMobileMenu }) {
           handleUnit();
         }}
       >
-        Change weather unit
+        Change unit
       </motion.p>
     </div>
   );

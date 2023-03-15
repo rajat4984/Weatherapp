@@ -25,7 +25,6 @@ export const AppProvider = ({ children }) => {
   const [currentData, setCurrentData] = useState(undefined);
 
   const handleUnit = () => {
-    console.log("hello");
     if (unit === "metric") {
       setUnit("imperial");
     } else if (unit === "imperial") {
@@ -39,7 +38,6 @@ export const AppProvider = ({ children }) => {
     } else {
       setTimeFormat("h12");
     }
-    console.log(timeFormat);
   };
 
   const getLatLon = async () => {
@@ -86,7 +84,6 @@ export const AppProvider = ({ children }) => {
   };
 
   const getTimeDay = (unixTime) => {
-    console.log("Hello");
     unixTime = new Date(unixTime * 1000);
     const time = unixTime.toLocaleTimeString("en-US", {
       hourCycle: `${timeFormat}`,

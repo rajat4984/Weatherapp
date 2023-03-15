@@ -22,7 +22,7 @@
       &::placeholder {
         color: #ffffffb4;
         padding-left: 0.5em;
-        font-size: 0.8rem;
+        font-size: 1rem;
       }
     }
     button {
@@ -55,6 +55,39 @@
         .search-bar{
           padding: 1em;
           padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  @include sm{
+    .search-bar{
+
+      .input{
+        height: 2.5em;
+      }
+      button{
+        cursor: pointer;
+      }
+    }
+    .mobile-navigation{
+      display: none;
+    }
+
+    .navigation{
+      display: block;
+
+      
+
+      .nav-links{
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 1.2rem;
+        justify-content: center;
+        align-items: center;
+
+        *:not(:first-child){
+          margin: 0 .7em;
         }
       }
     }
