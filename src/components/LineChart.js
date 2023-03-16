@@ -20,13 +20,13 @@ ChartJS.register(
   Tooltip
 );
 
-function LineChart({ data }) {
+function LineChart({weatherHeading, data }) {
   const { getTimeDay } = useGlobalContext();
   const [weather, setWeather] = useState({
     labels: data.map((item) => getTimeDay(item.dt).resultTime),
     datasets: [
       {
-        label: "5 Hour Weather",
+        label: `${weatherHeading}`,
         data: data.map((item) => {
           if (item.temp.day === undefined) {
             return Math.ceil(item.temp);
@@ -46,6 +46,14 @@ function LineChart({ data }) {
       <Line
         data={weather}
         options={{
+          plugins:{
+
+            legend: {
+              labels: {
+              color: 'White'
+            }
+          },
+          },
           maintainAspectRatio: false,
           pointRadius: 5,
           scales: {

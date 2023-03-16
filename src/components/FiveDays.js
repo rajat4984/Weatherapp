@@ -68,7 +68,7 @@ function FiveDays() {
           })}
         </div>
       ) : (
-        <LineChart data={fiveDaysData} />
+        <LineChart weatherHeading = "Next 5 Days" data={fiveDaysData} />
       )}
     </div>
   );

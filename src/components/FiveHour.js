@@ -35,7 +35,7 @@ function FiveHour() {
           })}
         </div>
       ) : (
-        <LineChart data={fiveHourData} />
+        <LineChart weatherHeading = "Next 5 hour" data={fiveHourData} />
       )}
     </div>
   );
