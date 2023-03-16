@@ -10,6 +10,7 @@ import {
   Legend,
   Tooltip,
 } from "chart.js/auto";
+import { useGlobalContext } from "../context";
 
 ChartJS.register(
   LineElement,
@@ -20,32 +21,37 @@ ChartJS.register(
   Tooltip
 );
 
-function LineChart() {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
+function LineChart({ data }) {
+  const { getTimeDay } = useGlobalContext();
+
+  const [weather, setWeather] = useState({
+    labels: data.map((item) => getTimeDay(item.dt).resultTime),
     datasets: [
       {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
-        color: "red",
-        borderColor: "black",
+        label: "5 Hour Weather",
+        data: data.map((item) => Math.ceil(item.temp)),
+        borderColor: "white",
+        backgroundColor: " #3c68df",
         borderWidth: 2,
-        tension: .4,
+        tension: 0.4,
       },
     ],
   });
   return (
-    <div style={{ width: "50%" }}>
+    <div style={{ width: "90%" }}>
       <Line
-        data={userData}
+        data={weather}
         options={{
           responsive: true,
+          pointRadius:5,
           scales: {
             y: {
-              ticks: { color: "white", beginAtZero: true },
+              ticks: { color: "white" },
+              beginAtZero: true,
             },
             x: {
-              ticks: { color: "white", beginAtZero: true },
+              ticks: { color: "white" },
+              beginAtZero: true,
             },
           },
         }}

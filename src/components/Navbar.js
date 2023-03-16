@@ -11,12 +11,15 @@ function Navbar({ brandName }) {
       <nav className="navbar">
         <div className="brand-name">
           <p>
-            {brandName} <FaTemperatureHigh />
+            <a href="/">
+              {" "}
+              {brandName} <FaTemperatureHigh />
+            </a>
           </p>
         </div>
         <div className="nav-links">
-          <Navigation/>
-          <MobileNavigation/>
+          <Navigation />
+          <MobileNavigation />
         </div>
       </nav>
       <hr className="default-hr" />

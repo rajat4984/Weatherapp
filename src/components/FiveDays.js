@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../context";
+import LineChart from "./LineChart";
 import "../scss/components/fivedays.scss";
 
 function FiveDays() {
@@ -24,7 +25,7 @@ function FiveDays() {
         </p>
       </div>
 
-      {!showFiveDayChart && (
+      {!showFiveDayChart ? (
         <div className="five-days-grid">
           {fiveDaysData.map((item, index) => {
             return (
@@ -66,6 +67,8 @@ function FiveDays() {
             );
           })}
         </div>
+      ) : (
+        <LineChart data ={fiveDaysData} />
       )}
     </div>
   );
