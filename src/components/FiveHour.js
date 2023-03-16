@@ -16,7 +16,7 @@ function FiveHour() {
     <div className="five-hour">
       <div className="heading-container">
         <h3 className="five-hour-heading">Next 5 hours</h3>
-        <p onClick={() => setFiveHourChart(!showFiveHourChart)}>Chart</p>
+        <p onClick={() => setFiveHourChart(!showFiveHourChart)}>{showFiveHourChart===true?"Card":"Chart"}</p>
       </div>
       {!showFiveHourChart ? (
         <div className="five-hour-grid">

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { UserData } from "../Data";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -23,13 +22,18 @@ ChartJS.register(
 
 function LineChart({ data }) {
   const { getTimeDay } = useGlobalContext();
-
   const [weather, setWeather] = useState({
     labels: data.map((item) => getTimeDay(item.dt).resultTime),
     datasets: [
       {
         label: "5 Hour Weather",
-        data: data.map((item) => Math.ceil(item.temp)),
+        data: data.map((item) => {
+          if (item.temp.day === undefined) {
+            return Math.ceil(item.temp);
+          } else {
+            return Math.ceil(item.temp.day);
+          }
+        }),
         borderColor: "white",
         backgroundColor: " #3c68df",
         borderWidth: 2,
@@ -38,12 +42,12 @@ function LineChart({ data }) {
     ],
   });
   return (
-    <div style={{ width: "90%" }}>
+    <div className="linechart-container">
       <Line
         data={weather}
         options={{
-          responsive: true,
-          pointRadius:5,
+          maintainAspectRatio: false,
+          pointRadius: 5,
           scales: {
             y: {
               ticks: { color: "white" },

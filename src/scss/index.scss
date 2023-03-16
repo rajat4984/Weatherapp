@@ -1,13 +1,12 @@
-@use "./mixin.scss" as *;
+@use "./mixin" as *;
 
-*{
+* {
   font-family: "Hubballi", cursive;
   margin: 0;
   padding: 0;
 }
 
-
-body{
+body {
   background-image: linear-gradient(
     to bottom,
     #4561df,
@@ -18,14 +17,23 @@ body{
   );
   color: white;
   box-sizing: border-box;
-  font-size: clamp(22px,2vw,2.5vw);
+  font-size: clamp(22px, 2vw, 2.5vw);
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
 
-.content-wrapper{
+.content-wrapper {
   margin: 0 12%;
+}
+
+.linechart-container {
+  width: 100%;
+
+  @include sm {
+    width: 1000px;
+    height: 400px;
+  }
 }

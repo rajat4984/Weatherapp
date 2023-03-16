@@ -44,14 +44,12 @@ export const AppProvider = ({ children }) => {
 
   const handleCity = () => {
     setCity(inputRef.current.value);
-    console.log(city);
   };
 
   const getLatLon = async () => {
     const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
     const res = await axios.get(url);
     const data = res.data[0];
-    console.log(data);
     const lat = data.lat;
     const lon = data.lon;
     setTodayWeatherCity(`${data.state},${data.country}`)

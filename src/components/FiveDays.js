@@ -21,7 +21,7 @@ function FiveDays() {
             setFiveDayChart(!showFiveDayChart);
           }}
         >
-          Chart
+          {showFiveDayChart === true ? "Card" : "Chart"}
         </p>
       </div>
 
@@ -68,7 +68,7 @@ function FiveDays() {
           })}
         </div>
       ) : (
-        <LineChart data ={fiveDaysData} />
+        <LineChart data={fiveDaysData} />
       )}
     </div>
   );
