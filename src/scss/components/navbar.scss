@@ -4,7 +4,7 @@
 
 .navbar {
   @include flexBox(space-between);
-  margin: $base-margin;
+  margin: 0.5em;
 
   .search-bar {
     @include flexBox($justify: flex-start);
@@ -22,6 +22,7 @@
       &::placeholder {
         color: #ffffffb4;
         padding-left: 0.5em;
+
         font-size: 1rem;
       }
     }
@@ -40,7 +41,7 @@
   .mobile-navigation {
     .mobile-navigation-links {
       position: absolute;
-      top: clamp(20px,2.8em,500px);
+      top: clamp(20px, 2.8em, 500px);
       right: 0%;
       background-color: rgba(27, 27, 27, 0.911);
       width: 100%;
@@ -52,7 +53,7 @@
           cursor: pointer;
         }
 
-        .search-bar{
+        .search-bar {
           padding: 1em;
           padding-bottom: 0;
         }
@@ -60,34 +61,41 @@
     }
   }
 
-  @include sm{
-    .search-bar{
-
-      .input{
-        height: 2.5em;
-      }
-      button{
-        cursor: pointer;
-      }
-    }
-    .mobile-navigation{
+  @include sm {
+    .mobile-navigation {
       display: none;
     }
 
-    .navigation{
+    .navigation {
       display: block;
 
-      
-
-      .nav-links{
+      .nav-links {
         display: flex;
         flex-direction: row-reverse;
         font-size: 1.2rem;
         justify-content: center;
         align-items: center;
 
-        *:not(:first-child){
-          margin: 0 .7em;
+        * {
+          padding: 0.5em;
+          border-radius: 10px;
+        }
+
+        *:not(:first-child) {
+          cursor: pointer;
+          transition: 0.3s;
+          margin: 0 0.5em;
+
+          &:hover {
+            background-color: white;
+            color: #3c68df;
+          }
+        }
+      }
+
+      .search-bar {
+        button {
+          cursor: pointer;
         }
       }
     }

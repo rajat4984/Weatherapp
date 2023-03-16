@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useGlobalContext } from "../../context";
 
 function NavLinks({ isMobile, closeMobileMenu }) {
-  const { handleUnit, handleTime } = useGlobalContext();
+  const { handleUnit, handleTime,handleCity,inputRef } = useGlobalContext();
 
   const animationFrom = { opacity: 0, y: -40 };
   const animateTo = { opacity: 1, y: 0 };
@@ -17,8 +17,13 @@ function NavLinks({ isMobile, closeMobileMenu }) {
         animate={animateTo}
         className="search-bar"
       >
-        <input type="text" placeholder="eg:Delhi" />
-        <button onClick={() => isMobile && closeMobileMenu()}>
+        <input type="text" ref={inputRef} placeholder="eg:Delhi" />
+        <button
+          onClick={() => {
+            isMobile && closeMobileMenu();
+            handleCity();
+          }}
+        >
           <BiSearchAlt />
         </button>
       </motion.div>

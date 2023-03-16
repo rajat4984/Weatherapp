@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 import "../scss/components/todayweather.scss";
 
 function TodayWeather() {
-  const { currentData, getIcon, getTimeDay } = useGlobalContext();
+  const { currentData, getIcon, getTimeDay,todayWeatherCity } = useGlobalContext();
 
   const todayDate = new Date();
   const today = String(todayDate).slice(0, 10);
@@ -14,7 +14,7 @@ function TodayWeather() {
       ) : (
         <div className="today-weather">
           <div className="location">
-            <h1>New Delhi,IN</h1>
+            <h1>{todayWeatherCity}</h1>
             <p>{today}</p>
           </div>
 

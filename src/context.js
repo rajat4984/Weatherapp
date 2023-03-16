@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useContext, useState } from "react";
 import { IoThunderstormOutline } from "react-icons/io5";
 import {
@@ -17,12 +17,14 @@ export const AppProvider = ({ children }) => {
   const apiKey = `170e7d85c14723782ac20964a574ef47`;
   const [city, setCity] = useState("Delhi");
   const [unit, setUnit] = useState("metric");
+  const [todayWeatherCity,setTodayWeatherCity] = useState("Delhi");
   const [timeFormat, setTimeFormat] = useState("h12");
   const [showFiveDayChart, setFiveDayChart] = useState(false);
   const [showFiveHourChart, setFiveHourChart] = useState(false);
   const [fiveHourData, setFiveHourData] = useState([]);
   const [fiveDaysData, setFiveDaysData] = useState([]);
   const [currentData, setCurrentData] = useState(undefined);
+  const inputRef = useRef(null);
 
   const handleUnit = () => {
     if (unit === "metric") {
@@ -40,12 +42,19 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const handleCity = () => {
+    setCity(inputRef.current.value);
+    console.log(city);
+  };
+
   const getLatLon = async () => {
     const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
     const res = await axios.get(url);
     const data = res.data[0];
+    console.log(data);
     const lat = data.lat;
     const lon = data.lon;
+    setTodayWeatherCity(`${data.state},${data.country}`)
     return [lat, lon];
   };
 
@@ -116,6 +125,9 @@ export const AppProvider = ({ children }) => {
         setFiveHourChart,
         currentData,
         handleTime,
+        handleCity,
+        inputRef,
+        todayWeatherCity
       }}
     >
       {children}
