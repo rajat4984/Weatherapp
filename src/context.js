@@ -23,6 +23,7 @@ export const AppProvider = ({ children }) => {
   const [showFiveHourChart, setFiveHourChart] = useState(false);
   const [fiveHourData, setFiveHourData] = useState([]);
   const [fiveDaysData, setFiveDaysData] = useState([]);
+  const [loading, setLoading] = useState(true)
   const [currentData, setCurrentData] = useState(undefined);
   const inputRef = useRef(null);
 
@@ -57,6 +58,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const getFiveHourData = async () => {
+    setLoading(true);
     const cityInfo = await getLatLon();
     const lat = cityInfo[0];
     const lon = cityInfo[1];
@@ -70,6 +72,7 @@ export const AppProvider = ({ children }) => {
     setFiveHourData([...hourlyData]);
     setFiveDaysData([...dailyData]);
     setCurrentData({ ...todayData });
+    setLoading(false);
   };
 
   const getIcon = (iconId) => {
@@ -125,7 +128,9 @@ export const AppProvider = ({ children }) => {
         handleTime,
         handleCity,
         inputRef,
-        todayWeatherCity
+        todayWeatherCity,
+        loading,
+        setLoading
       }}
     >
       {children}
